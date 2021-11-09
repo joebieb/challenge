@@ -1,0 +1,24 @@
+.quotation-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    margin: auto;
+  }
+  .quotation-form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 300px;
+    padding: 50px;
+  }
+  .quotation-field {
+    width: 100%;
+  }
+  .quotation-button {
+    width: 100px;
+    margin-top: 20px;
+  }

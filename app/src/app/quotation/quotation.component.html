@@ -1,0 +1,41 @@
+<section class="quotation-container">
+    <form [formGroup]="quotationForm" class="quotation-form">
+        <mat-form-field class="quotation-field">
+            <input matInput formControlName="age" placeholder="Comma separated list of ages"/>
+            <mat-error *ngIf="age.invalid">Comma separated list of ages is expected</mat-error>
+        </mat-form-field>  
+
+        <mat-form-field class="quotation-field">
+            <mat-label>Currency</mat-label>
+            <mat-select formControlName="currency">
+                <mat-option *ngFor="let currency of currencies" [value]="currency.value">
+                    {{currency.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="quotation-field">
+            <mat-label>Enter a date range</mat-label>
+            <mat-date-range-input [min]="minDate" formGroupName="dates" [rangePicker]="picker">
+                <input matStartDate formControlName="start" placeholder="Start date"/>
+                <input matEndDate formControlName="end" placeholder="End date"/>
+            </mat-date-range-input>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+
+        <button (click)="getQuote()" class="quotation-button" mat-raised-button color="primary">Get Quote</button>
+    </form>
+</section>
+<section class="quotation-container"  *ngIf="currentQuote">
+    <mat-list>
+        <mat-list-item class="mat-title">A Quote For You</mat-list-item>
+        <mat-list-item> Total: {{ currentQuote.total }} </mat-list-item>
+        <mat-list-item> Currency: {{ currentQuote.currency_id }} </mat-list-item>
+        <mat-list-item> Quote #: {{ currentQuote.quotation_id }} </mat-list-item>
+    </mat-list>
+</section>
+<section class="quotation-container"  *ngIf="responseError">
+    <p> {{ responseError }} </p>
+</section>
+

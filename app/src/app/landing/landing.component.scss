@@ -1,0 +1,12 @@
+.landing-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    margin: auto;
+  }
+.landing-card {
+    max-width: 400px;
+}

@@ -1,0 +1,20 @@
+FROM python:3.9.5
+
+WORKDIR /app
+
+ADD routers /app/routers
+ADD schemas /app/schemas
+ADD services /app/services
+ADD shared /app/shared
+ADD static /app/static
+COPY main.py .
+COPY config.py .
+COPY db.py .
+COPY __init__.py .
+COPY requirements.txt .
+
+RUN pip install -r requirements.txt
+
+EXPOSE 80
+
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]

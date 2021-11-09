@@ -1,0 +1,21 @@
+<section class="login-container">
+    <form class="login-form" #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+        <mat-form-field class="login-field">
+        <input matInput
+            type="email"
+            placeholder="Email Address"
+            name="email"
+            email
+            required
+            ngModel
+            #emailInput="ngModel"
+        />
+        <mat-error *ngIf="emailInput.hasError('required')">Email is required!</mat-error>
+        <mat-error *ngIf="!emailInput.hasError('required')">Email is invalid!</mat-error>
+        </mat-form-field>  
+        <button class="login-button" mat-raised-button color="primary" [disabled]="loginForm.invalid">Fake Login</button>
+    </form>
+</section>
+<section class="login-container"  *ngIf="responseError">
+    <p> {{ responseError }} </p>
+</section>

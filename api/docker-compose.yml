@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+    challenge:
+        image: challengeapi:latest
+        container_name: challengeapi
+        build:
+            context: ./
+            dockerfile: dockerfile
+        ports:
+          - "8000:80" 
+        environment:
+          - API_VERSION=0.1.0
+          - MODE=DEVELOPMENT
+          - SECRET_KEY=e9449647d0d3b24425a6ce549ce25cd1fa7bd389f33fa252275c0de82c219ef3
